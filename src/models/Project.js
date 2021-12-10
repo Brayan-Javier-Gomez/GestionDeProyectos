@@ -9,8 +9,7 @@ const ProjectSchema = new Schema({
         required:[true, "El nombre es obligatorio"]
     },
     owner:{
-        type:String,
-        required:[true, "El propietario es obligatorio"]
+        type: mongoose.Schema.Types.ObjectId, ref: "Usuario"
     },
     objetives:{
         type:String,

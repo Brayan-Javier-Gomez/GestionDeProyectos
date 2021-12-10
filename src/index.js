@@ -8,7 +8,9 @@ port = process.env.PORT;
 app.use(express.json())
 app.use(express.urlencoded({extended:false}));
 
-app.get('/', (req, res) => res.send('Hello World!'))
+app.use(require('./Routes/routes'))
+
+app.get('/', (req, res) => res.send('<h1>Api del software de gestion de proyectos</h1>'))
 
 
 mongoose.connect(process.env.URLDB, { useNewUrlParser: true, useUnifiedTopology: true }, (err, resp) => {
@@ -18,5 +20,5 @@ mongoose.connect(process.env.URLDB, { useNewUrlParser: true, useUnifiedTopology:
 
 });
 
-app.listen(port, () => console.log(`Example app listening on port ${port}!`))
+app.listen(port, () => console.log(`Servidor del project iniciado en el puerto ${port}!`))
 

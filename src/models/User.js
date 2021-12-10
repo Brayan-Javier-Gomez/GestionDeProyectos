@@ -29,4 +29,4 @@ const UserSchema = new Schema({
 })
 
 
-module.exports = mongoose.model('usuario', UserSchema);
+module.exports = mongoose.model('Usuario', UserSchema);
