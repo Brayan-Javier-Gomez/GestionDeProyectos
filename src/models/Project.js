@@ -11,8 +11,11 @@ const ProjectSchema = new Schema({
     owner:{
         type: mongoose.Schema.Types.ObjectId, ref: "Usuario"
     },
+    members:{
+        type: mongoose.Schema.Types.ObjectId, ref: "Usuario"
+    },
     objetives:{
-        type:String,
+        type: mongoose.Schema.Types.ObjectId, ref: "Objetivo"
     },
     
     comments:{
@@ -31,4 +34,4 @@ const ProjectSchema = new Schema({
 })
 
 
-module.exports = mongoose.model('proyecto', ProjectSchema);
+module.exports = mongoose.model('Proyecto', ProjectSchema);

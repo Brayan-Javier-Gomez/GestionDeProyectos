@@ -5,6 +5,7 @@ const { autenticaToken , rolAdministrador, rolSuperAdmin, rolIntegrante } = requ
 
 
 const Projects = require('../models/Project');
+const Member = require('../models/member');
 
 
 app.get('/proyectos', [autenticaToken, rolIntegrante],(req,res) => {
@@ -62,6 +63,54 @@ proyecto.save((err, proyecto)=>{
     })
 })
 
+})
+
+
+//Asignar proyecto a usuario
+
+app.post('/proyectos/:idproyecto/:idusuario' , [autenticaToken, rolAdministrador], (req, res)=>{
+
+    let idProyecto = req.params.idproyecto;
+
+    let idUsuario = req.params.idusuario;
+
+    let newMember = new Member({
+        user: idUsuario,
+        project : idProyecto
+    })
+
+    newMember.save((err, newMemberDB)=>{
+        if(err){
+            return res.status(400).json({
+                ok:false,
+                err
+            })
+        }
+    
+        res.json({
+            ok: true,
+            newMemberDB,
+        })
+    })
+})
+
+//obtener miembros del equipo
+app.get('/proyectos/members/:id', [autenticaToken, rolIntegrante], (req,res)=>{
+    let idProject = req.params.id;
+    Member.find({project:idProject})
+    .exec((err, members)=>{
+        if(err){
+            return res.status(400).json({
+                ok:false,
+                err
+            })
+        }
+    
+        res.json({
+            ok: true,
+            team:members,
+        })
+    })
 })
 
 module.exports = app;

@@ -54,6 +54,9 @@ app.post('/usuario', (req, res) => {
     })
 })
 
+
+
+
 app.put('/usuario/:id', (req, res) => {
     let body = _.pick(req.body, ['nombre', 'email', 'img', 'rol']);
     let id = req.params.id;

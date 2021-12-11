@@ -25,4 +25,4 @@ const ObjetiveSchema = new Schema({
 })
 
 
-module.exports = mongoose.model('objetivo', ObjetiveSchema);
+module.exports = mongoose.model('Objetivo', ObjetiveSchema);
