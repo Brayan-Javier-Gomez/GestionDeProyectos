@@ -64,7 +64,7 @@ proyecto.save((err, proyecto)=>{
 })
 
 })
-
+ 
 
 //Asignar proyecto a usuario
 
