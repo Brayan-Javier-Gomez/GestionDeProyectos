@@ -2,6 +2,7 @@ import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
 import { DashboardComponent } from './dashboard/dashboard.component';
 import { LoginComponent } from './login/login.component';
+import { ProjectComponent } from './project/project.component';
 import { RegisterComponent } from './register/register.component';
 
 const routes: Routes = [
@@ -18,6 +19,12 @@ const routes: Routes = [
     },
     {
       path:"dashboard" , component: DashboardComponent
+    },
+    // {
+    //   path:"project" , component: ProjectComponent
+    // },
+    {
+      path:"project/:id" , component: ProjectComponent
     },
     {
       path:"**", redirectTo: "dashboard"

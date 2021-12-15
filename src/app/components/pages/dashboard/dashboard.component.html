@@ -1,1 +1,29 @@
 <p>dashboard works!</p>
+
+<button (click)=" getAllProjects()">Get Projects</button>
+<button (click)="getAllUsers()">Get Users</button>
+
+<div *ngFor="let user of dataUsers">
+    {{user.first_name}}
+    {{user.last_name}} <br>
+    {{user.email}} <br>
+    {{user.rol}}
+    <hr>
+</div>
+ 
+<div *ngFor="let project of dataProjects">
+    <div>
+        {{project.name}} <br>
+
+        {{project.project_status}} <br>
+        {{project.owner.first_name}} <br>
+        {{project._id}} <br>
+        <button routerLink="/dashboard/project/{{project._id}}" >
+            Info project
+        </button>
+
+        <hr>
+
+    </div>
+    
+</div> 

@@ -1,1 +1,23 @@
-<p>project works!</p>
+ <div *ngFor="let project of dataProject">
+    <h2>{{project.name}}</h2> 
+</div>
+<hr>
+<h3>Objetivos</h3>
+<div *ngFor="let objetives of dataObjetives">
+    {{objetives.name}} <br>
+    {{objetives.description}} <br>
+</div>
+<hr>
+<h3>Integrantes</h3>
+<hr>
+
+<div *ngFor="let members of membersProject.team">
+    {{members.user.first_name}}
+    {{members.user.last_name}} <br>
+
+    {{members.user.email}} <br>
+    {{members.user.rol}} <br>
+
+    <hr>
+</div>
+
