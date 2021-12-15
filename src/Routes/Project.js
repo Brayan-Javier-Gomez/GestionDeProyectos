@@ -34,6 +34,25 @@ Projects.find()
 
 })
 
+app.get('/proyectos/:id', [autenticaToken, rolIntegrante],(req,res) => {
+
+    const id = req.params.id;
+
+    Projects.findOne({_id:id} , (err, projectDb)=>{
+
+        if (err) {
+            return res.status(400).json({
+                ok: false,
+                err
+            })
+        } 
+        res.json({
+            ok: true,
+            project: projectDb
+        })
+    })
+})
+
 
 
 
@@ -98,6 +117,7 @@ app.post('/proyectos/:idproyecto/:idusuario' , [autenticaToken, rolAdministrador
 app.get('/proyectos/members/:id', [autenticaToken, rolIntegrante], (req,res)=>{
     let idProject = req.params.id;
     Member.find({project:idProject})
+    .populate("user")
     .exec((err, members)=>{
         if(err){
             return res.status(400).json({

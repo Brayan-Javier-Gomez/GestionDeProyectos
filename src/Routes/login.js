@@ -19,7 +19,7 @@ app.post('/login', (req, res) => {
             }
 
             if (!UserDB) {
-                return res.status(400).json({
+                return res.status(200).json({
                     ok: false,
                     err: {
                         msg: 'Usuario o contraseña incorrectos',
@@ -29,7 +29,7 @@ app.post('/login', (req, res) => {
             }
 
             if (bcrypt.compareSync(body.password, UserDB.password) === false) {
-                return res.status(400).json({
+                return res.status(200).json({
                     ok: false,
                     err: {
                         msg: 'Usuario o contraseña incorrectos',
